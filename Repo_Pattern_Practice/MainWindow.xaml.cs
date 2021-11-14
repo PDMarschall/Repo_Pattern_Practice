@@ -7,6 +7,8 @@ using System.Data;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using Repo_Pattern_Practice.DatabaseEntities;
+using Repo_Pattern_Practice.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace ZipcodeEditor
 {
@@ -21,7 +23,14 @@ namespace ZipcodeEditor
         }
         private void cmdTest_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            ApplicationContext context = new ApplicationContext();
+            
+            Zipcode testcode = new Zipcode();
+            testcode.Code = "0001";
+            testcode.City = "Testby";
+            context.Add(testcode);
+            context.SaveChanges();
         }
 
         private void Refresh()

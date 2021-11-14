@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 using Repo_Pattern_Practice.DatabaseEntities;
+using System.Configuration;
 
 namespace Repo_Pattern_Practice.Repository
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Zipcode> Zipcodes { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
 
-        public class ApplicationDbContext : DbContext
+
+
+        private string _connectionString = "Data Source=DESKTOP-0R2P5IM; Initial Catalog=Contacts; Integrated Security=True";
+
+        public ApplicationContext()
         {
-            private readonly string _connectionString;
-
-            public ApplicationDbContext(string connectionString)
-            {
-                _connectionString = connectionString;
-            }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseSqlServer(_connectionString);
-            }
+            
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
+
     }
 }
