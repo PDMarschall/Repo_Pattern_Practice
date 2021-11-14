@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Repo_Pattern_Practice.Repository
 {
@@ -45,7 +46,14 @@ namespace Repo_Pattern_Practice.Repository
 
         public void SaveChanges()
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+            catch
+            {
+                MessageBox.Show("Your attempted operation has been logged and HR has been notified.", "Illegal Operation.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

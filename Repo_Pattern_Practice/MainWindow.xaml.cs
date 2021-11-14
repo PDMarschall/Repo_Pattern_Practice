@@ -25,21 +25,11 @@ namespace ZipcodeEditor
             zipcodeRepository = new ZipcodeRepository(applicationContext);
             Select();
         }
-
-        private void cmdDelete_Click(object sender, RoutedEventArgs e)
-        {
-            Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
-            applicationContext.ChangeTracker.Clear();
-
-            zipcodeRepository.Delete(insertZipcode);
-            zipcodeRepository.SaveChanges();
-
-            ClearText();
-        }
         private void cmdSelect_Click(object sender, RoutedEventArgs e)
         {
             Select();
         }
+
         private void cmdInsert_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
@@ -58,6 +48,18 @@ namespace ZipcodeEditor
 
             Refresh();
         }
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
+            applicationContext.ChangeTracker.Clear();
+
+            zipcodeRepository.Delete(insertZipcode);
+            zipcodeRepository.SaveChanges();
+
+            ClearText();
+        }
+
         private void cmdClear_Click(object sender, RoutedEventArgs e)
         {
             Clear();
@@ -65,7 +67,7 @@ namespace ZipcodeEditor
 
         private void Select()
         {
-            IEnumerable<Zipcode> searchResults = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim()) 
+            IEnumerable<Zipcode> searchResults = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim())
                                                                     && zipcode.City.StartsWith(txtCity.Text.Trim()));
             zipcodeRepository.SaveChanges();
 
@@ -74,7 +76,7 @@ namespace ZipcodeEditor
             {
                 list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() }); ;
             }
-            
+
             Refresh();
         }
 
