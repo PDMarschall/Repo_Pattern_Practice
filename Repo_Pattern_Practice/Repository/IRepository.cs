@@ -11,8 +11,7 @@ namespace Repo_Pattern_Practice.Repository
     {
         T Delete(T entity);
         T Update(T entity);
-        T Insert(T entity);
-        IEnumerable<T> All();
+        T Insert(T entity);        
         IEnumerable<T> Select(Expression<Func<T, bool>> predicate);
         void SaveChanges();
 

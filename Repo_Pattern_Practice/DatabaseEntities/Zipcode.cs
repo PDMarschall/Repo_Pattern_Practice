@@ -8,7 +8,7 @@ namespace Repo_Pattern_Practice.DatabaseEntities
 {
     public class Zipcode
     {
-        public string Code { get; set; }
+        public Guid Code { get; set; }
         public string City { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Repo_Pattern_Practice.DatabaseEntities
 {
-    class Address
+    public class Address
     {
-        public string Phone { get; set; }
+        public Guid Phone { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Vejnummer { get; set; }
