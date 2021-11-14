@@ -23,14 +23,19 @@ namespace ZipcodeEditor
         }
         private void cmdTest_Click(object sender, RoutedEventArgs e)
         {
-            
-            ApplicationContext context = new ApplicationContext();
-            
-            Zipcode testcode = new Zipcode();
-            testcode.Code = "0001";
-            testcode.City = "Testby";
-            context.Add(testcode);
-            context.SaveChanges();
+            ApplicationContext applicationContext = new ApplicationContext();
+            ZipcodeRepository zipcodeRepository = new ZipcodeRepository(applicationContext);
+            //Zipcode zipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
+
+            //while (reader.Read()) list.Add(new Zipcode { Code = reader[0].ToString(), City = reader[1].ToString() });
+
+            var test = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim()) && zipcode.City.StartsWith(txtCity.Text.Trim()));
+            list.Clear();
+            foreach (Zipcode result in test)
+            {
+                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() }); ;
+            }
+            Refresh();
         }
 
         private void Refresh()
