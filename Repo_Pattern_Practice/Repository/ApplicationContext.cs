@@ -11,17 +11,10 @@ namespace Repo_Pattern_Practice.Repository
 
         public DbSet<Address> Addresses { get; set; }
 
-        private string _connectionString = "Data Source=DESKTOP-0R2P5IM; Initial Catalog=Contacts; Integrated Security=True";
-
-        public ApplicationContext()
-        {
-            
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_connectionString);
-            optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["post"].ConnectionString);            
         }
     }
 }

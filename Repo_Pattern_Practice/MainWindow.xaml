@@ -22,13 +22,13 @@
         <TextBox Name="txtCity" Grid.Row="1" Grid.Column="1" Margin="5"/>
 
         <Button Name="cmdSeek" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
-            Width="70" Content="Select" Margin="5,20,5,20" Click="cmdSeek_Click" />
+            Width="70" Content="Select" Margin="5,20,5,20" Click="cmdSelect_Click" />
         <Button Name="cmdAdd" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
-            Width="70" Content="Insert" Margin="5,20,85,20" Click="cmdAdd_Click" />
+            Width="70" Content="Insert" Margin="5,20,85,20" Click="cmdInsert_Click" />
         <Button Name="cmdUpdate" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
             Width="70" Content="Update" Margin="5,20,165,20" Click="cmdUpdate_Click" />
         <Button Name="cmdRemove" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
-            Width="70" Content="Delete" Margin="5,20,245,20" Click="cmdRemove_Click" />
+            Width="70" Content="Delete" Margin="5,20,245,20" Click="cmdDelete_Click" />
         <Button Name="cmdClear" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
             Width="70" Content="Clear" Margin="5,20,325,20" Click="cmdClear_Click" />
 

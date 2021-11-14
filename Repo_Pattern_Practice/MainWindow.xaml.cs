@@ -26,24 +26,27 @@ namespace ZipcodeEditor
             Select();
         }
 
-        private void cmdRemove_Click(object sender, RoutedEventArgs e)
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
             applicationContext.ChangeTracker.Clear();
+
             zipcodeRepository.Delete(insertZipcode);
             zipcodeRepository.SaveChanges();
-            Select();
+
+            ClearText();
         }
-        private void cmdSeek_Click(object sender, RoutedEventArgs e)
+        private void cmdSelect_Click(object sender, RoutedEventArgs e)
         {
             Select();
         }
-        private void cmdAdd_Click(object sender, RoutedEventArgs e)
+        private void cmdInsert_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
+
             zipcodeRepository.Insert(insertZipcode);
             zipcodeRepository.SaveChanges();
-            applicationContext.ChangeTracker.Clear();
+
         }
         private void cmdUpdate_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +65,8 @@ namespace ZipcodeEditor
 
         private void Select()
         {
-            var searchResults = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim()) && zipcode.City.StartsWith(txtCity.Text.Trim()));
+            IEnumerable<Zipcode> searchResults = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim()) 
+                                                                    && zipcode.City.StartsWith(txtCity.Text.Trim()));
             zipcodeRepository.SaveChanges();
 
             list.Clear();
@@ -70,6 +74,7 @@ namespace ZipcodeEditor
             {
                 list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() }); ;
             }
+            
             Refresh();
         }
 
@@ -79,6 +84,12 @@ namespace ZipcodeEditor
             txtCode.Clear();
             txtCity.Clear();
             Select();
+        }
+
+        private void ClearText()
+        {
+            txtCity.Clear();
+            txtCode.Clear();
         }
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
