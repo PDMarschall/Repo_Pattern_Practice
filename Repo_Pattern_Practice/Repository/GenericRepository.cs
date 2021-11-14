@@ -20,27 +20,32 @@ namespace Repo_Pattern_Practice.Repository
 
         public virtual T Delete(T entity)
         {
-            throw new NotImplementedException();
+            return context.Remove(entity).Entity;
         }
 
         public virtual T Insert(T entity)
         {
-            throw new NotImplementedException();
-        }              
+            return context
+            .Add(entity)
+            .Entity;
+        }
 
         public virtual IEnumerable<T> Select(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return context.Set<T>()
+            .AsQueryable()
+            .Where(predicate).ToList();
         }
 
         public virtual T Update(T entity)
         {
-            throw new NotImplementedException();
+            return context.Update(entity)
+            .Entity;
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
     }
 }

@@ -31,7 +31,6 @@
             Width="70" Content="Delete" Margin="5,20,245,20" Click="cmdRemove_Click" />
         <Button Name="cmdClear" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
             Width="70" Content="Clear" Margin="5,20,325,20" Click="cmdClear_Click" />
-        <Button Name="cmdTest" Width="70" Content="Test" Click="cmdTest_Click" HorizontalAlignment="Center" Grid.Column="1"/>
 
         <DataGrid Name="grid" Grid.Row="3" Grid.ColumnSpan="2" AutoGenerateColumns="False" 
               CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" 

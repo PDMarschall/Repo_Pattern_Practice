@@ -18,12 +18,5 @@ namespace Repo_Pattern_Practice.Repository
 
         }
 
-        public override IEnumerable<Zipcode> Select(Expression<Func<Zipcode, bool>> predicate)
-        {
-            return context.Set<Zipcode>()
-            .AsQueryable()
-            .Where(predicate).ToList();
-        }
     }
 }
-
