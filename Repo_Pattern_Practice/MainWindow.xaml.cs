@@ -15,21 +15,20 @@ namespace ZipcodeEditor
     public partial class MainWindow : Window
     {
         private List<Zipcode> list = new List<Zipcode>();
+        private ApplicationContext applicationContext;
+        private ZipcodeRepository zipcodeRepository;
 
         public MainWindow()
         {
             InitializeComponent();
+            applicationContext = new ApplicationContext();
+            zipcodeRepository = new ZipcodeRepository(applicationContext);
             Seek("", "");
         }
         private void cmdTest_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationContext applicationContext = new ApplicationContext();
-            ZipcodeRepository zipcodeRepository = new ZipcodeRepository(applicationContext);
-            //Zipcode zipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
-
-            //while (reader.Read()) list.Add(new Zipcode { Code = reader[0].ToString(), City = reader[1].ToString() });
-
             var test = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim()) && zipcode.City.StartsWith(txtCity.Text.Trim()));
+
             list.Clear();
             foreach (Zipcode result in test)
             {
