@@ -19,6 +19,10 @@ namespace ZipcodeEditor
             InitializeComponent();
             Seek("", "");
         }
+        private void cmdTest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void Refresh()
         {
@@ -170,5 +174,7 @@ namespace ZipcodeEditor
                 txtCity.Text = list[n].City;
             }
         }
+
+        
     }
 }

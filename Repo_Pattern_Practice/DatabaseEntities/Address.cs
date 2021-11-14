@@ -8,7 +8,7 @@ namespace Repo_Pattern_Practice.DatabaseEntities
 {
     public class Address
     {
-        public Guid Phone { get; set; }
+        public string Phone { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Vejnummer { get; set; }
