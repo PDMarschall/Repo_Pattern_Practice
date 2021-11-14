@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Repo_Pattern_Practice.DatabaseEntities
 {
-    class Zipcode
+    public class Zipcode
     {
+        public string Code { get; set; }
+        public string City { get; set; }
     }
 }

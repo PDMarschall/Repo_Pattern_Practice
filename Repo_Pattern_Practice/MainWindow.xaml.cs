@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using Repo_Pattern_Practice.DatabaseEntities;
 
 namespace ZipcodeEditor
 {
@@ -158,12 +159,6 @@ namespace ZipcodeEditor
             SqlParameter param = new SqlParameter(name, type);
             param.Value = value;
             return param;
-        }
-
-        private class Zipcode
-        {
-            public string Code { get; set; }
-            public string City { get; set; }
         }
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
