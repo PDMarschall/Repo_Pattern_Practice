@@ -11,7 +11,6 @@ namespace Repo_Pattern_Practice.Repository
 
         public DbSet<Address> Addresses { get; set; }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["post"].ConnectionString);            

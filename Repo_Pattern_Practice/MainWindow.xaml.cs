@@ -36,8 +36,8 @@ namespace ZipcodeEditor
 
             zipcodeRepository.Insert(insertZipcode);
             zipcodeRepository.SaveChanges();
-
         }
+
         private void cmdUpdate_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
