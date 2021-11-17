@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Repo_Pattern_Practice.DatabaseEntities;
+﻿using Repo_Pattern_Practice.DatabaseEntities;
 
 namespace Repo_Pattern_Practice.Repository
 {

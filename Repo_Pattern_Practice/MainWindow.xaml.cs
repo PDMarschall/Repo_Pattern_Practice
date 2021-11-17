@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Configuration;
-using System.Data;
 using System.Collections.ObjectModel;
-using System.Data.SqlClient;
 using Repo_Pattern_Practice.DatabaseEntities;
 using Repo_Pattern_Practice.Repository;
-using Microsoft.EntityFrameworkCore;
 
 namespace ZipcodeEditor
 {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repo_Pattern_Practice.DatabaseEntities;
 using System.Configuration;
-using System.Linq;
 
 namespace Repo_Pattern_Practice.Repository
 {
