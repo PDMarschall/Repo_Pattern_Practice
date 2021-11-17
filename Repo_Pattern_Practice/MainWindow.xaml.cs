@@ -9,6 +9,7 @@ namespace ZipcodeEditor
 {
     public partial class MainWindow : Window
     {
+
         private List<Zipcode> list = new List<Zipcode>();
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
@@ -20,6 +21,7 @@ namespace ZipcodeEditor
             zipcodeRepository = new ZipcodeRepository(applicationContext);
             Select();
         }
+
         private void cmdSelect_Click(object sender, RoutedEventArgs e)
         {
             Select();
