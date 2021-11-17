@@ -6,6 +6,7 @@ using System.Windows;
 
 namespace Repo_Pattern_Practice.Repository
 {
+
     public abstract class GenericRepository<T> : IRepository<T> where T : class
     {
         protected ApplicationContext context;

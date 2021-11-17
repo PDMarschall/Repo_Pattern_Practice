@@ -12,14 +12,12 @@ namespace ZipcodeEditor
         private List<Zipcode> list = new List<Zipcode>();
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
-        private AddressRepository addressRepository;
 
         public MainWindow()
         {
             InitializeComponent();
             applicationContext = new ApplicationContext();
             zipcodeRepository = new ZipcodeRepository(applicationContext);
-            addressRepository = new AddressRepository(applicationContext);
             Select();
         }
         private void cmdSelect_Click(object sender, RoutedEventArgs e)
