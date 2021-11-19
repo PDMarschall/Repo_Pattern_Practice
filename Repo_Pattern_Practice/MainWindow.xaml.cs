@@ -10,6 +10,7 @@ namespace ZipcodeEditor
     public partial class MainWindow : Window
     {
 
+
         private List<Zipcode> list = new List<Zipcode>();
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
