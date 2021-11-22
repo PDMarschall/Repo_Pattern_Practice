@@ -12,10 +12,12 @@ namespace ZipcodeEditor
     {
         private List<Zipcode> listZipcodes = new List<Zipcode>();
         private List<Addresse> listAddresses = new List<Addresse>();
-        
+        private List<Contact> listContacts = new List<Contact>();
+
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
         private AddressRepository addressRepository;
+        
 
         public MainWindow()
         {
@@ -23,54 +25,33 @@ namespace ZipcodeEditor
             applicationContext = new ApplicationContext();
             zipcodeRepository = new ZipcodeRepository(applicationContext);
             addressRepository = new AddressRepository(applicationContext);
+
+
             Select();
         }
 
         private void Select()
         {
-            
-            
-
-            IEnumerable<Zipcode> searchResultsZipcode = zipcodeRepository.Select
-                (zipcode => zipcode.Code.StartsWith(Zipcode_Search.Text.Trim())
-                && zipcode.City.StartsWith(City_Search.Text.Trim()));
-            zipcodeRepository.SaveChanges();
 
             IEnumerable<Addresse> searchResultsAddress = addressRepository.Select
-                (address => address.Phone.StartsWith(Phone_Search.Text.Trim()) 
-                && address.FirstName.StartsWith(First_Name_Search.Text.Trim()) 
-                && address.LastName.StartsWith(Last_Name_Search.Text.Trim()) 
+                (address => address.Phone.StartsWith(Phone_Search.Text.Trim())
+                && address.FirstName.StartsWith(First_Name_Search.Text.Trim())
+                && address.LastName.StartsWith(Last_Name_Search.Text.Trim())
                 && address.Address.StartsWith(Address_Search.Text.Trim())
                 && address.Title.StartsWith(Title_Search.Text.Trim()));
             addressRepository.SaveChanges();
 
-            listZipcodes.Clear();
-            foreach (Zipcode result in searchResultsZipcode)
-            {
-                listZipcodes.Add(new Zipcode { 
-                    Code = result.Code.ToString(), 
-                    City = result.City.ToString() }); ;
-            }
-            listAddresses.Clear();
+            listContacts.Clear();
             foreach (Addresse result in searchResultsAddress)
             {
-                listAddresses.Add(new Addresse
-                {
-                    Phone = result.Phone.ToString(),
-                    FirstName = result.FirstName.ToString(),
-                    LastName = result.LastName.ToString(),
-                    Address = result.Address.ToString(),
-                    Email = result.Email.ToString(),
-                    Title = result.Title.ToString()
-                    }); ;
+                listContacts.Add(new Contact(result, zipcodeRepository.ReturnZipCode(result.Zipcode)));
             }
-
+            
             Refresh();
         }
         private void Refresh()
         {
-            maingrid.ItemsSource = new ObservableCollection<Zipcode>(listZipcodes);
-            maingrid.ItemsSource = new ObservableCollection<Addresse>(listAddresses);
+            maingrid.ItemsSource = new ObservableCollection<Contact>(listContacts);
         }
 
 

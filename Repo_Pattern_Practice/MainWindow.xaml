@@ -42,14 +42,14 @@
               CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" 
               SelectionChanged="grid_SelectionChanged" Margin="0,80,0,0" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Phone" Width="90" Binding="{Binding Phone}" />
-                <DataGridTextColumn Header="First Name" Width="90" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last Name" Width="90" Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="Address" Width="90" Binding="{Binding Address}" />
-                <DataGridTextColumn Header="Zipcode" Width="90" Binding="{Binding Zipcode}" />
-                <DataGridTextColumn Header="City" Width="90" Binding="{Binding City}" />
-                <DataGridTextColumn Header="Title" Width="90" Binding="{Binding Title}" />
-                <DataGridTextColumn Header="Email" Width="90" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Phone" Width="90" Binding="{Binding addresse.Phone}" />
+                <DataGridTextColumn Header="First Name" Width="90" Binding="{Binding addresse.FirstName}" />
+                <DataGridTextColumn Header="Last Name" Width="90" Binding="{Binding addresse.LastName}" />
+                <DataGridTextColumn Header="Address" Width="90" Binding="{Binding addresse.Address}" />
+                <DataGridTextColumn Header="Zipcode" Width="90" Binding="{Binding zipcode.Code}" />
+                <DataGridTextColumn Header="City" Width="90" Binding="{Binding zipcode.City}" />
+                <DataGridTextColumn Header="Title" Width="90" Binding="{Binding addresse.Title}" />
+                <DataGridTextColumn Header="Email" Width="90" Binding="{Binding addresse.Email}" />
             </DataGrid.Columns>
         </DataGrid>
 
