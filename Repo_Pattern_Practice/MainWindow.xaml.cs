@@ -2,7 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-using Repo_Pattern_Practice.DatabaseEntities;
+using Repo_Pattern_Practice.Models;
+
 using Repo_Pattern_Practice.Repository;
 
 namespace ZipcodeEditor
@@ -11,6 +12,7 @@ namespace ZipcodeEditor
     {
         private List<Zipcode> listZipcodes = new List<Zipcode>();
         private List<Addresse> listAddresses = new List<Addresse>();
+        
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
         private AddressRepository addressRepository;
@@ -25,11 +27,19 @@ namespace ZipcodeEditor
         }
 
         private void Select()
-        {
-            IEnumerable<Zipcode> searchResultsZipcode = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(Zipcode_Search.Text.Trim())
-                                                                    && zipcode.City.StartsWith(City_Search.Text.Trim()));
+        {           
+
+            IEnumerable<Zipcode> searchResultsZipcode = zipcodeRepository.Select
+                (zipcode => zipcode.Code.StartsWith(Zipcode_Search.Text.Trim())
+                && zipcode.City.StartsWith(City_Search.Text.Trim()));
             zipcodeRepository.SaveChanges();
-            IEnumerable<Addresse> searchResultsAddress = addressRepository.Select(address => address.Phone.StartsWith(Phone_Search.Text.Trim()));
+
+            IEnumerable<Addresse> searchResultsAddress = addressRepository.Select
+                (address => address.Phone.StartsWith(Phone_Search.Text.Trim()) 
+                && address.FirstName.StartsWith(First_Name_Search.Text.Trim()) 
+                && address.LastName.StartsWith(Last_Name_Search.Text.Trim()) 
+                && address.Address.StartsWith(Address_Search.Text.Trim())
+                && address.Title.StartsWith(Title_Search.Text.Trim()));
             addressRepository.SaveChanges();
 
             listZipcodes.Clear();
@@ -49,8 +59,7 @@ namespace ZipcodeEditor
                     Address = result.Address.ToString(),
                     Email = result.Email.ToString(),
                     Title = result.Title.ToString(),
-                    Zipcode = result.Zipcode.ToString(),
-                    City = result.City.ToString()}) ;
+                    Zipcode = result.Zipcode.ToString()}) ;
             }
 
             Refresh();
@@ -85,7 +94,7 @@ namespace ZipcodeEditor
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            Select();
         }
     }
 }

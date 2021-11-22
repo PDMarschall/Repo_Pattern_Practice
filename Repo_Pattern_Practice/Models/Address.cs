@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Repo_Pattern_Practice.DatabaseEntities
+namespace Repo_Pattern_Practice.Models
 {
     public class Addresse
     {
@@ -12,6 +12,5 @@ namespace Repo_Pattern_Practice.DatabaseEntities
         public string Email { get; set; }
         public string Title { get; set; }
         public string Zipcode { get; set; }
-        public string City { get; set; }
     }
 }

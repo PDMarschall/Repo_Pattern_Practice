@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-using Repo_Pattern_Practice.DatabaseEntities;
+using Repo_Pattern_Practice.Models;
 using Repo_Pattern_Practice.Repository;
 
 namespace ZipcodeEditor

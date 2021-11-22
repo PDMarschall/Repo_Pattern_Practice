@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repo_Pattern_Practice.DatabaseEntities;
+using Repo_Pattern_Practice.Models;
 using System.Configuration;
 
 

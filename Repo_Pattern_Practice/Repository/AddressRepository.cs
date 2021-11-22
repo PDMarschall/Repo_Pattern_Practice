@@ -1,4 +1,4 @@
-﻿using Repo_Pattern_Practice.DatabaseEntities;
+﻿using Repo_Pattern_Practice.Models;
 
 namespace Repo_Pattern_Practice.Repository
 {

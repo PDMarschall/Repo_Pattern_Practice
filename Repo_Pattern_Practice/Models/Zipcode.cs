@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Repo_Pattern_Practice.Repository;
 
-namespace Repo_Pattern_Practice.DatabaseEntities
+namespace Repo_Pattern_Practice.Models
 {
     public class Zipcode
     {
