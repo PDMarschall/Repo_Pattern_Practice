@@ -1,9 +1,12 @@
 ﻿<Window x:Class="ZipcodeEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="450" Width="460" FontFamily="Verdana" 
+        Title="MainWindow" Height="450" Width="800" FontFamily="Verdana" 
         FontSize="12" ResizeMode="NoResize">
     <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top" Background="White">
             <MenuItem Header="Functions">
                 <MenuItem Header="Create Address" Click="NewAddress_Click"/>
@@ -12,7 +15,43 @@
                 <MenuItem Header="Clear Fields" Click="ClearFields_Click"/>
             </MenuItem>
         </Menu>
+        <TextBlock Text="Phone" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 30, 0, 0"/>
+        <TextBox Name="Phone_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="0, 50, 0, 0" />
 
+        <TextBlock Text="First Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90, 30, 0, 0"/>
+        <TextBox Name="First_Name_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="90, 50, 0, 0" />
+
+        <TextBlock Text="Last Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180, 30, 0, 0"/>
+        <TextBox Name="Last_Name_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="180, 50, 0, 0" />
+
+        <TextBlock Text="Address" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="270, 30, 0, 0"/>
+        <TextBox Name="Address_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="270, 50, 0, 0" />
+
+        <TextBlock Text="Zipcode" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360, 30, 0, 0"/>
+        <TextBox Name="Zipcode_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="360, 50, 0, 0" />
+
+        <TextBlock Text="City" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="450, 30, 0, 0"/>
+        <TextBox Name="City_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="450, 50, 0, 0" />
+
+        <TextBlock Text="Title" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="540, 30, 0, 0"/>
+        <TextBox Name="Title_Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="540, 50, 0, 0" />
+
+        <Button Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660, 48, 0, 0" Click="cmdSearch_Click"/>
+
+        <DataGrid Name="maingrid" AutoGenerateColumns="False" 
+              CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" 
+              SelectionChanged="grid_SelectionChanged" Margin="0,80,0,0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Phone" Width="90" Binding="{Binding Phone}" />
+                <DataGridTextColumn Header="First Name" Width="90" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Width="90" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Address" Width="90" Binding="{Binding Address}" />
+                <DataGridTextColumn Header="Zipcode" Width="90" Binding="{Binding Zipcode}" />
+                <DataGridTextColumn Header="City" Width="90" Binding="{Binding City}" />
+                <DataGridTextColumn Header="Title" Width="90" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Email" Width="90" Binding="{Binding Email}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
