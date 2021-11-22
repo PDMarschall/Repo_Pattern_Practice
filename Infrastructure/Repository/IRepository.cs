@@ -11,5 +11,6 @@ namespace Repo_Pattern_Practice.Repository
         T Insert(T entity);
         IEnumerable<T> Select(Expression<Func<T, bool>> predicate);
         void SaveChanges();
+
     }
 }

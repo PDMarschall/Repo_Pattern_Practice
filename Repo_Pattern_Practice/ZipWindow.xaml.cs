@@ -7,14 +7,14 @@ using Repo_Pattern_Practice.Repository;
 
 namespace ZipcodeEditor
 {
-    public partial class MainWindow : Window
+    public partial class ZipWindow : Window
     {
 
         private List<Zipcode> list = new List<Zipcode>();
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
 
-        public MainWindow()
+        public ZipWindow()
         {
             InitializeComponent();
             applicationContext = new ApplicationContext();
@@ -33,8 +33,6 @@ namespace ZipcodeEditor
 
             zipcodeRepository.Insert(insertZipcode);
             zipcodeRepository.SaveChanges();
-
-            applicationContext.ChangeTracker.Clear();
         }
 
         private void cmdUpdate_Click(object sender, RoutedEventArgs e)
@@ -45,7 +43,6 @@ namespace ZipcodeEditor
             zipcodeRepository.Update(insertZipcode);
             zipcodeRepository.SaveChanges();
 
-            applicationContext.ChangeTracker.Clear();
             Refresh();
         }
 
@@ -57,13 +54,11 @@ namespace ZipcodeEditor
             zipcodeRepository.Delete(insertZipcode);
             zipcodeRepository.SaveChanges();
 
-            applicationContext.ChangeTracker.Clear();
             ClearText();
         }
 
         private void cmdClear_Click(object sender, RoutedEventArgs e)
         {
-            applicationContext.ChangeTracker.Clear();
             Clear();
         }
 
@@ -76,10 +71,9 @@ namespace ZipcodeEditor
             list.Clear();
             foreach (Zipcode result in searchResults)
             {
-                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() });
+                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() }); ;
             }
 
-            applicationContext.ChangeTracker.Clear();
             Refresh();
         }
 

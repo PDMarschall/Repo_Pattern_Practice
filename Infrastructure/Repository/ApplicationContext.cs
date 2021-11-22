@@ -13,7 +13,7 @@ namespace Repo_Pattern_Practice.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["post"].ConnectionString);            
         }
     }
 }
