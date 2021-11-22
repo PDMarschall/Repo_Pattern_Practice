@@ -2,7 +2,7 @@
 
 namespace Repo_Pattern_Practice.Repository
 {
-    class AddressRepository : GenericRepository<Addresse>
+    public class AddressRepository : GenericRepository<Addresse>
     {
         public AddressRepository(ApplicationContext context) : base(context)
         {
