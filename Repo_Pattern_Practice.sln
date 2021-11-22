@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repo_Pattern_Practice", "Repo_Pattern_Practice\Repo_Pattern_Practice.csproj", "{52F5A1BA-9A71-4379-A776-152F922AAD6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repo_Pattern_Practice", "Repo_Pattern_Practice\Repo_Pattern_Practice.csproj", "{52F5A1BA-9A71-4379-A776-152F922AAD6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{772483DE-4E0D-481A-BDF5-03AAE7A04265}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{4517C6AB-01D3-45FD-8A22-0C442D061BD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsDB_WPF_UI", "ContactsDB_WPF_UI\ContactsDB_WPF_UI.csproj", "{82F28F9A-64A6-4723-B2F2-DA9B7DD9B5F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{52F5A1BA-9A71-4379-A776-152F922AAD6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F5A1BA-9A71-4379-A776-152F922AAD6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F5A1BA-9A71-4379-A776-152F922AAD6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{772483DE-4E0D-481A-BDF5-03AAE7A04265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{772483DE-4E0D-481A-BDF5-03AAE7A04265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{772483DE-4E0D-481A-BDF5-03AAE7A04265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{772483DE-4E0D-481A-BDF5-03AAE7A04265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4517C6AB-01D3-45FD-8A22-0C442D061BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4517C6AB-01D3-45FD-8A22-0C442D061BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4517C6AB-01D3-45FD-8A22-0C442D061BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4517C6AB-01D3-45FD-8A22-0C442D061BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F28F9A-64A6-4723-B2F2-DA9B7DD9B5F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F28F9A-64A6-4723-B2F2-DA9B7DD9B5F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F28F9A-64A6-4723-B2F2-DA9B7DD9B5F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F28F9A-64A6-4723-B2F2-DA9B7DD9B5F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
