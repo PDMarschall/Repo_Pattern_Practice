@@ -10,8 +10,7 @@ namespace ZipcodeEditor
 {
     public partial class MainWindow : Window
     {
-        private List<Zipcode> listZipcodes = new List<Zipcode>();
-        private List<Addresse> listAddresses = new List<Addresse>();
+        
         private List<Contact> listContacts = new List<Contact>();
         private List<Contact> storageContacts = new List<Contact>();
 
