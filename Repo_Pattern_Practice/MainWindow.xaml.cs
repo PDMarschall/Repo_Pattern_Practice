@@ -10,14 +10,13 @@ namespace ZipcodeEditor
 {
     public partial class MainWindow : Window
     {
-        
         private List<Contact> listContacts = new List<Contact>();
         private List<Contact> storageContacts = new List<Contact>();
 
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
         private AddressRepository addressRepository;
-        
+
 
         public MainWindow()
         {
@@ -30,7 +29,6 @@ namespace ZipcodeEditor
 
         private void Populate()
         {
-
             IEnumerable<Addresse> searchResultsAddress = addressRepository.Select
                 (address => address.Phone.StartsWith(Phone_Search.Text.Trim())
                 && address.FirstName.StartsWith(First_Name_Search.Text.Trim())
@@ -39,33 +37,31 @@ namespace ZipcodeEditor
                 && address.Title.StartsWith(Title_Search.Text.Trim()));
             addressRepository.SaveChanges();
 
-            
             foreach (Addresse result in searchResultsAddress)
             {
                 storageContacts.Add(new Contact(result, zipcodeRepository.ReturnZipCode(result.Zipcode)));
             }
 
             maingrid.ItemsSource = new ObservableCollection<Contact>(storageContacts);
-        }
+        }        
 
         private void Select()
         {
-
             IEnumerable<Contact> searchResultsContact = storageContacts.FindAll
-                (contact => contact.addresse.Phone.StartsWith(Phone_Search.Text.Trim())
-                && contact.addresse.FirstName.StartsWith(First_Name_Search.Text.Trim())
-                && contact.addresse.LastName.StartsWith(Last_Name_Search.Text.Trim())
-                && contact.addresse.Address.StartsWith(Address_Search.Text.Trim())
-                && contact.addresse.Title.StartsWith(Title_Search.Text.Trim())
-                && contact.zipcode.City.StartsWith(City_Search.Text.Trim())
-                && contact.zipcode.Code.StartsWith(Zipcode_Search.Text.Trim()));
+                (contact => contact.Addresse.Phone.StartsWith(Phone_Search.Text.Trim())
+                && contact.Addresse.FirstName.StartsWith(First_Name_Search.Text.Trim())
+                && contact.Addresse.LastName.StartsWith(Last_Name_Search.Text.Trim())
+                && contact.Addresse.Address.StartsWith(Address_Search.Text.Trim())
+                && contact.Addresse.Title.StartsWith(Title_Search.Text.Trim())
+                && contact.Zipcode.City.StartsWith(City_Search.Text.Trim())
+                && contact.Zipcode.Code.StartsWith(Zipcode_Search.Text.Trim()));
 
             listContacts.Clear();
             foreach (Contact result in searchResultsContact)
             {
                 listContacts.Add(result);
             }
-            
+
             Refresh();
         }
         private void Refresh()

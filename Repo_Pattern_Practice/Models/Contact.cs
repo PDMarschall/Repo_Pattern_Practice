@@ -9,9 +9,9 @@ namespace Repo_Pattern_Practice.Models
 {
     public class Contact
     {
-        public Zipcode zipcode { get; set; }
+        public Zipcode Zipcode { get; set; }
 
-        public Addresse addresse { get; set; }
+        public Addresse Addresse { get; set; }
 
         public Contact()
         {
@@ -20,8 +20,8 @@ namespace Repo_Pattern_Practice.Models
 
         public Contact(Addresse addresse, Zipcode zipcode)
         {
-            this.addresse = addresse;
-            this.zipcode = zipcode;
+            this.Addresse = addresse;
+            this.Zipcode = zipcode;
         }
 
     }
