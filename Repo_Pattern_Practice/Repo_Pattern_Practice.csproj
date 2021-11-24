@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="AddressWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="ZipWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
