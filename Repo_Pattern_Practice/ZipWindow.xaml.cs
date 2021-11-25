@@ -9,7 +9,6 @@ namespace ZipcodeEditor
 {
     public partial class ZipWindow : Window
     {
-
         private List<Zipcode> list = new List<Zipcode>();
         private ApplicationContext applicationContext;
         private ZipcodeRepository zipcodeRepository;
@@ -71,7 +70,7 @@ namespace ZipcodeEditor
             list.Clear();
             foreach (Zipcode result in searchResults)
             {
-                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() }); ;
+                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() });
             }
 
             Refresh();

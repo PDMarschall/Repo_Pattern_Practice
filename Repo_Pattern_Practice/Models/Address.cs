@@ -12,7 +12,6 @@ namespace Repo_Pattern_Practice.Models
         public string Address { get; set; }
         public string Email { get; set; }
         public string Title { get; set; }
-        [ForeignKey("Code")]
         public string Zipcode { get; set; }
     }
 }
