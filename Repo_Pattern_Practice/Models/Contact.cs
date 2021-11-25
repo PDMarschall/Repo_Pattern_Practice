@@ -20,8 +20,8 @@ namespace Repo_Pattern_Practice.Models
 
         public Contact(Addresse addresse, Zipcode zipcode)
         {
-            this.Addresse = addresse;
-            this.Zipcode = zipcode;
+            Addresse = addresse;
+            Zipcode = zipcode;
         }
 
     }

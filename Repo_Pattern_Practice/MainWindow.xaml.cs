@@ -17,7 +17,6 @@ namespace ZipcodeEditor
         private ZipcodeRepository zipcodeRepository;
         private AddressRepository addressRepository;
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +42,7 @@ namespace ZipcodeEditor
             }
 
             maingrid.ItemsSource = new ObservableCollection<Contact>(storageContacts);
-        }        
+        }
 
         private void Select()
         {
