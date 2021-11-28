@@ -42,7 +42,7 @@
                 <DataGridTextColumn Header="Zipcode" Width="90" Binding="{Binding Zipcode.Code}" />
                 <DataGridTextColumn Header="City" Width="90" Binding="{Binding Zipcode.City}" />
                 <DataGridTextColumn Header="Title" Width="90" Binding="{Binding Addresse.Title}" />
-                <DataGridTextColumn Header="Email" Width="90" Binding="{Binding Addresse.Email}" />
+                <DataGridTextColumn Header="Email" Width="auto" Binding="{Binding Addresse.Email}" />
             </DataGrid.Columns>
         </DataGrid>
 

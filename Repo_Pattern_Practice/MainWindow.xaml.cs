@@ -10,12 +10,12 @@ namespace ZipcodeEditor
 {
     public partial class MainWindow : Window
     {
-        private List<Contact> listContacts = new List<Contact>();
-        private List<Contact> storageContacts = new List<Contact>();
+        private List<Contact> _listContacts = new List<Contact>();
+        private List<Contact> _storageContacts = new List<Contact>();
 
-        private ApplicationContext applicationContext;
-        private ZipcodeRepository zipcodeRepository;
-        private AddressRepository addressRepository;
+        private ApplicationContext _applicationContext;
+        private ZipcodeRepository _zipcodeRepository;
+        private AddressRepository _addressRepository;
 
         public MainWindow()
         {
@@ -25,33 +25,33 @@ namespace ZipcodeEditor
 
         private void Populate()
         {
-            applicationContext = new ApplicationContext();
-            zipcodeRepository = new ZipcodeRepository(applicationContext);
-            addressRepository = new AddressRepository(applicationContext);
+            _applicationContext = new ApplicationContext();
+            _zipcodeRepository = new ZipcodeRepository(_applicationContext);
+            _addressRepository = new AddressRepository(_applicationContext);
 
-            IEnumerable<Addresse> searchResultsAddress = addressRepository.Select
+            IEnumerable<Addresse> searchResultsAddress = _addressRepository.Select
                 (address => address.Phone.StartsWith(Phone_Search.Text.Trim())
                 && address.FirstName.StartsWith(First_Name_Search.Text.Trim())
                 && address.LastName.StartsWith(Last_Name_Search.Text.Trim())
                 && address.Address.StartsWith(Address_Search.Text.Trim())
                 && address.Title.StartsWith(Title_Search.Text.Trim()));
-            addressRepository.SaveChanges();
+            _addressRepository.SaveChanges();
 
-            storageContacts.Clear();
-            listContacts.Clear();
+            _storageContacts.Clear();
+            _listContacts.Clear();
 
             foreach (Addresse result in searchResultsAddress)
             {
-                storageContacts.Add(new Contact(result, zipcodeRepository.ReturnEntity(result.Zipcode)));
-                listContacts.Add(new Contact(result, zipcodeRepository.ReturnEntity(result.Zipcode)));
+                _storageContacts.Add(new Contact(result, _zipcodeRepository.ReturnEntity(result.Zipcode)));
+                _listContacts.Add(new Contact(result, _zipcodeRepository.ReturnEntity(result.Zipcode)));
             }
 
-            maingrid.ItemsSource = new ObservableCollection<Contact>(storageContacts);
+            maingrid.ItemsSource = new ObservableCollection<Contact>(_storageContacts);
         }
 
         private void Select()
         {
-            IEnumerable<Contact> searchResultsContact = storageContacts.FindAll
+            IEnumerable<Contact> searchResultsContact = _storageContacts.FindAll
                 (contact => contact.Addresse.Phone.StartsWith(Phone_Search.Text.Trim())
                 && contact.Addresse.FirstName.StartsWith(First_Name_Search.Text.Trim())
                 && contact.Addresse.LastName.StartsWith(Last_Name_Search.Text.Trim())
@@ -60,17 +60,17 @@ namespace ZipcodeEditor
                 && contact.Zipcode.City.StartsWith(City_Search.Text.Trim())
                 && contact.Zipcode.Code.StartsWith(Zipcode_Search.Text.Trim()));
 
-            listContacts.Clear();
+            _listContacts.Clear();
             foreach (Contact result in searchResultsContact)
             {
-                listContacts.Add(result);
+                _listContacts.Add(result);
             }
 
             Refresh();
         }
         private void Refresh()
         {
-            maingrid.ItemsSource = new ObservableCollection<Contact>(listContacts);
+            maingrid.ItemsSource = new ObservableCollection<Contact>(_listContacts);
         }
 
 
@@ -110,7 +110,7 @@ namespace ZipcodeEditor
         private void maingrid_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {            
             int n = maingrid.SelectedIndex;
-            AddressWindow addressWindow = new AddressWindow(listContacts[n].Addresse);
+            AddressWindow addressWindow = new AddressWindow(_listContacts[n].Addresse);
             addressWindow.ShowDialog();
         }
 

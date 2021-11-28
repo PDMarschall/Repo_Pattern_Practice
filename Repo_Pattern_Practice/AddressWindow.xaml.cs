@@ -10,24 +10,23 @@ namespace ZipcodeEditor
 {
     public partial class AddressWindow : Window
     {
-        private Addresse initialAddress;
-        private ApplicationContext context;
-
-        private AddressRepository addressRepository;
+        private Addresse _initialAddress;
+        private ApplicationContext _context;
+        private AddressRepository _addressRepository;
 
         public AddressWindow()
         {
             InitializeComponent();
-            context = new ApplicationContext();
-            addressRepository = new AddressRepository(context);
+            _context = new ApplicationContext();
+            _addressRepository = new AddressRepository(_context);
         }
         public AddressWindow(Addresse addresse)
         {
             InitializeComponent();
-            initialAddress = addresse;
+            _initialAddress = addresse;
             GetInitialText(addresse);
-            context = new ApplicationContext();
-            addressRepository = new AddressRepository(context);
+            _context = new ApplicationContext();
+            _addressRepository = new AddressRepository(_context);
         }
 
         private void GetInitialText(Addresse addresse)
@@ -43,17 +42,18 @@ namespace ZipcodeEditor
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
-            if (initialAddress == null)
+            if (_initialAddress == null)
             {
                 Addresse insertAddress = ConstructAddress();
-                addressRepository.Insert(insertAddress);
-                addressRepository.SaveChanges();
+                _addressRepository.Insert(insertAddress);
+                _addressRepository.SaveChanges();
+
             }
             else if (Phone_Box.Text.Trim() != "")
             {
                 Addresse updateAddresse = ConstructAddress();
-                addressRepository.Update(updateAddresse);
-                addressRepository.SaveChanges();
+                _addressRepository.Update(updateAddresse);
+                _addressRepository.SaveChanges();
             }
             Close();
 
@@ -63,7 +63,14 @@ namespace ZipcodeEditor
         {
             Close();
         }
-
+        private void cmdRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Addresse removeAddresse = ConstructAddress();
+            _addressRepository.RepoContext.ChangeTracker.Clear();
+            _addressRepository.Delete(removeAddresse);
+            _addressRepository.SaveChanges();
+            Close();
+        }
         private Addresse ConstructAddress()
         {
             Addresse newAddress = new Addresse(
@@ -76,15 +83,6 @@ namespace ZipcodeEditor
                 Title_Box.Text.Trim());
 
             return newAddress;
-        }
-
-        private void cmdRemove_Click(object sender, RoutedEventArgs e)
-        {
-            Addresse removeAddresse = ConstructAddress();
-            addressRepository.RepoContext.ChangeTracker.Clear();
-            addressRepository.Delete(removeAddresse);
-            addressRepository.SaveChanges();
-            Close();
         }
     }
 }

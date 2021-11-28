@@ -9,15 +9,15 @@ namespace ZipcodeEditor
 {
     public partial class ZipWindow : Window
     {
-        private List<Zipcode> list = new List<Zipcode>();
-        private ApplicationContext applicationContext;
-        private ZipcodeRepository zipcodeRepository;
+        private List<Zipcode> _list = new List<Zipcode>();
+        private ApplicationContext _applicationContext;
+        private ZipcodeRepository _zipcodeRepository;
 
         public ZipWindow()
         {
             InitializeComponent();
-            applicationContext = new ApplicationContext();
-            zipcodeRepository = new ZipcodeRepository(applicationContext);
+            _applicationContext = new ApplicationContext();
+            _zipcodeRepository = new ZipcodeRepository(_applicationContext);
             Select();
         }
 
@@ -30,17 +30,17 @@ namespace ZipcodeEditor
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
 
-            zipcodeRepository.Insert(insertZipcode);
-            zipcodeRepository.SaveChanges();
+            _zipcodeRepository.Insert(insertZipcode);
+            _zipcodeRepository.SaveChanges();
         }
 
         private void cmdUpdate_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
-            applicationContext.ChangeTracker.Clear();
+            _applicationContext.ChangeTracker.Clear();
 
-            zipcodeRepository.Update(insertZipcode);
-            zipcodeRepository.SaveChanges();
+            _zipcodeRepository.Update(insertZipcode);
+            _zipcodeRepository.SaveChanges();
 
             Refresh();
         }
@@ -48,10 +48,10 @@ namespace ZipcodeEditor
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
             Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
-            applicationContext.ChangeTracker.Clear();
+            _applicationContext.ChangeTracker.Clear();
 
-            zipcodeRepository.Delete(insertZipcode);
-            zipcodeRepository.SaveChanges();
+            _zipcodeRepository.Delete(insertZipcode);
+            _zipcodeRepository.SaveChanges();
 
             ClearText();
         }
@@ -63,14 +63,14 @@ namespace ZipcodeEditor
 
         private void Select()
         {
-            IEnumerable<Zipcode> searchResults = zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim())
+            IEnumerable<Zipcode> searchResults = _zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim())
                                                                     && zipcode.City.StartsWith(txtCity.Text.Trim()));
-            zipcodeRepository.SaveChanges();
+            _zipcodeRepository.SaveChanges();
 
-            list.Clear();
+            _list.Clear();
             foreach (Zipcode result in searchResults)
             {
-                list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() });
+                _list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() });
             }
 
             Refresh();
@@ -95,14 +95,14 @@ namespace ZipcodeEditor
             int n = grid.SelectedIndex;
             if (n >= 0)
             {
-                txtCode.Text = list[n].Code;
-                txtCity.Text = list[n].City;
+                txtCode.Text = _list[n].Code;
+                txtCity.Text = _list[n].City;
             }
         }
 
         private void Refresh()
         {
-            grid.ItemsSource = new ObservableCollection<Zipcode>(list);
+            grid.ItemsSource = new ObservableCollection<Zipcode>(_list);
         }
 
 
