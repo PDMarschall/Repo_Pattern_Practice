@@ -31,7 +31,7 @@
 
         <DataGrid Name="maingrid" AutoGenerateColumns="False" 
               CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" 
-              SelectionChanged="grid_SelectionChanged" Margin="0,80,0,0" >
+              SelectionChanged="grid_SelectionChanged" Margin="0,80,0,0" MouseDoubleClick="maingrid_DoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Phone" Width="90" Binding="{Binding Addresse.Phone}" />
                 <DataGridTextColumn Header="First Name" Width="90" Binding="{Binding Addresse.FirstName}" />

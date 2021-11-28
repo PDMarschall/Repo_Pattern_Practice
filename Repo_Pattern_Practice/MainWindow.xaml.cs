@@ -38,8 +38,9 @@ namespace ZipcodeEditor
 
             foreach (Addresse result in searchResultsAddress)
             {
-                storageContacts.Add(new Contact(result, zipcodeRepository.ReturnZipCode(result.Zipcode)));
+                storageContacts.Add(new Contact(result, zipcodeRepository.ReturnZipCode(result.Zipcode)));                
             }
+            listContacts = storageContacts;
 
             maingrid.ItemsSource = new ObservableCollection<Contact>(storageContacts);
         }
@@ -71,7 +72,9 @@ namespace ZipcodeEditor
 
         private void NewAddress_Click(object sender, RoutedEventArgs e)
         {
-
+            AddressWindow addressWindow = new AddressWindow();
+            addressWindow.Phone_Box.IsEnabled = true;
+            addressWindow.ShowDialog();
         }
 
         private void ManageZipcodes_Click(object sender, RoutedEventArgs e)
@@ -87,12 +90,34 @@ namespace ZipcodeEditor
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            int n = maingrid.SelectedIndex;
+            if (n >= 0)
+            {
+                Phone_Search.Text = listContacts[n].Addresse.Phone;
+            }
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
             Select();
+        }
+
+        private void maingrid_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            AddressWindow addressWindow = new AddressWindow();
+            int n = maingrid.SelectedIndex;
+            if (n >= 0)
+            {
+                addressWindow.Phone_Box.Text = listContacts[n].Addresse.Phone;
+                addressWindow.FirstName_Box.Text = listContacts[n].Addresse.FirstName;
+                addressWindow.LastName_Box.Text = listContacts[n].Addresse.LastName;
+                addressWindow.Address_Box.Text = listContacts[n].Addresse.Address;
+                addressWindow.Zipcode_Box.Text = listContacts[n].Addresse.Zipcode;
+                addressWindow.Email_Box.Text = listContacts[n].Addresse.Email;
+                addressWindow.Title_Box.Text = listContacts[n].Addresse.Title;
+
+            }
+            addressWindow.ShowDialog();
         }
     }
 }
