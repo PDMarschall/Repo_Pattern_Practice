@@ -12,12 +12,17 @@
         <TextBlock Text="Email Address" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0, 270, 0, 0"/>
         <TextBlock Text="Title" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0, 300, 0, 0"/>
 
-        <TextBox x:Name="Phone_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 30, 0, 0" IsReadOnly="True" IsEnabled="False"/>
+        <TextBox x:Name="Phone_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 30, 0, 0" IsEnabled="False"/>
         <TextBox x:Name="FirstName_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 90, 0, 0"/>
         <TextBox x:Name="LastName_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 120, 0, 0"/>
         <TextBox x:Name="Address_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 180, 0, 0"/>
         <TextBox x:Name="Zipcode_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 210, 0, 0"/>
         <TextBox x:Name="Email_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 270, 0, 0"/>
         <TextBox x:Name="Title_Box" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="180, 300, 0, 0"/>
+
+        <Button x:Name="OK_Address" Content="Ok" HorizontalAlignment="Left" VerticalAlignment="Top" Click="cmdOK_Click" Width="50" Margin="220,345,0,0" />
+        <Button x:Name="Cancel_Address" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Click="cmdCancel_Click" Width="50" Margin="300,345,0,0" />
+        <Button x:Name="Remove_Address" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Click="cmdRemove_Click" Width="80" Margin="100,345,0,0" />
+        
     </Grid>
 </Window>

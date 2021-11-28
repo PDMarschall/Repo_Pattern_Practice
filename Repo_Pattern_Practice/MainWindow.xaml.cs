@@ -20,14 +20,15 @@ namespace ZipcodeEditor
         public MainWindow()
         {
             InitializeComponent();
-            applicationContext = new ApplicationContext();
-            zipcodeRepository = new ZipcodeRepository(applicationContext);
-            addressRepository = new AddressRepository(applicationContext);
             Populate();
         }
 
         private void Populate()
         {
+            applicationContext = new ApplicationContext();
+            zipcodeRepository = new ZipcodeRepository(applicationContext);
+            addressRepository = new AddressRepository(applicationContext);
+
             IEnumerable<Addresse> searchResultsAddress = addressRepository.Select
                 (address => address.Phone.StartsWith(Phone_Search.Text.Trim())
                 && address.FirstName.StartsWith(First_Name_Search.Text.Trim())
@@ -36,11 +37,14 @@ namespace ZipcodeEditor
                 && address.Title.StartsWith(Title_Search.Text.Trim()));
             addressRepository.SaveChanges();
 
+            storageContacts.Clear();
+            listContacts.Clear();
+
             foreach (Addresse result in searchResultsAddress)
             {
-                storageContacts.Add(new Contact(result, zipcodeRepository.ReturnZipCode(result.Zipcode)));                
+                storageContacts.Add(new Contact(result, zipcodeRepository.ReturnEntity(result.Zipcode)));
+                listContacts.Add(new Contact(result, zipcodeRepository.ReturnEntity(result.Zipcode)));
             }
-            listContacts = storageContacts;
 
             maingrid.ItemsSource = new ObservableCollection<Contact>(storageContacts);
         }
@@ -85,39 +89,35 @@ namespace ZipcodeEditor
 
         private void ClearFields_Click(object sender, RoutedEventArgs e)
         {
-
+            Phone_Search.Clear();
+            First_Name_Search.Clear();
+            Last_Name_Search.Clear();
+            Address_Search.Clear();
+            Zipcode_Search.Clear();
+            Title_Search.Clear();
         }
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int n = maingrid.SelectedIndex;
-            if (n >= 0)
-            {
-                Phone_Search.Text = listContacts[n].Addresse.Phone;
-            }
+
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
-            Select();
+            Select();            
         }
 
         private void maingrid_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            AddressWindow addressWindow = new AddressWindow();
+        {            
             int n = maingrid.SelectedIndex;
-            if (n >= 0)
-            {
-                addressWindow.Phone_Box.Text = listContacts[n].Addresse.Phone;
-                addressWindow.FirstName_Box.Text = listContacts[n].Addresse.FirstName;
-                addressWindow.LastName_Box.Text = listContacts[n].Addresse.LastName;
-                addressWindow.Address_Box.Text = listContacts[n].Addresse.Address;
-                addressWindow.Zipcode_Box.Text = listContacts[n].Addresse.Zipcode;
-                addressWindow.Email_Box.Text = listContacts[n].Addresse.Email;
-                addressWindow.Title_Box.Text = listContacts[n].Addresse.Title;
-
-            }
+            AddressWindow addressWindow = new AddressWindow(listContacts[n].Addresse);
             addressWindow.ShowDialog();
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Populate();
+            Select();
         }
     }
 }

@@ -9,10 +9,5 @@ namespace Repo_Pattern_Practice.Repository
         {
 
         }
-
-        public Zipcode ReturnZipCode(string code)
-        {
-            return context.Find<Zipcode>(code);
-        }
     }
 }

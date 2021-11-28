@@ -10,6 +10,8 @@
                 <MenuItem Header="Manage Zipcodes" Click="ManageZipcodes_Click"/>
                 <Separator/>
                 <MenuItem Header="Clear Fields" Click="ClearFields_Click"/>
+                <MenuItem Header="Refresh" Click="Refresh_Click"/>
+                
             </MenuItem>
         </Menu>
         <TextBlock Text="Phone" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 30, 0, 0"/>

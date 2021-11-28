@@ -52,5 +52,18 @@ namespace Repo_Pattern_Practice.Repository
                 MessageBox.Show("Your attempted operation has been logged and HR has been notified.", "Illegal Operation.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        public T ReturnEntity(string id)
+        {
+            return context.Find<T>(id);
+        }
+
+        public ApplicationContext RepoContext
+        {
+            get
+            {
+                return context;
+            }
+        }
     }
 }
