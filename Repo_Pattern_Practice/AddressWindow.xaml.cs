@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Collections.ObjectModel;
+﻿using System.Windows;
 using Repo_Pattern_Practice.Models;
 
 using Repo_Pattern_Practice.Repository;
