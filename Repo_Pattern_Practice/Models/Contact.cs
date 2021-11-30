@@ -18,10 +18,10 @@ namespace Repo_Pattern_Practice.Models
 
         }
 
-        public Contact(Addresse addresse, Zipcode zipcode)
+        public Contact(Addresse a, Zipcode z)
         {
-            Addresse = addresse;
-            Zipcode = zipcode;
+            Addresse = a;
+            Zipcode = z;
         }
 
     }

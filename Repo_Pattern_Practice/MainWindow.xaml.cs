@@ -73,7 +73,6 @@ namespace ZipcodeEditor
             maingrid.ItemsSource = new ObservableCollection<Contact>(_listContacts);
         }
 
-
         private void NewAddress_Click(object sender, RoutedEventArgs e)
         {
             AddressWindow addressWindow = new AddressWindow();
