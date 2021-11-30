@@ -47,10 +47,10 @@ namespace ZipcodeEditor
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            Zipcode insertZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
+            Zipcode deleteZipcode = new Zipcode(txtCode.Text.Trim(), txtCity.Text.Trim());
             _applicationContext.ChangeTracker.Clear();
 
-            _zipcodeRepository.Delete(insertZipcode);
+            _zipcodeRepository.Delete(deleteZipcode);
             _zipcodeRepository.SaveChanges();
 
             ClearText();
@@ -65,12 +65,11 @@ namespace ZipcodeEditor
         {
             IEnumerable<Zipcode> searchResults = _zipcodeRepository.Select(zipcode => zipcode.Code.StartsWith(txtCode.Text.Trim())
                                                                     && zipcode.City.StartsWith(txtCity.Text.Trim()));
-            _zipcodeRepository.SaveChanges();
 
             _list.Clear();
             foreach (Zipcode result in searchResults)
             {
-                _list.Add(new Zipcode { Code = result.Code.ToString(), City = result.City.ToString() });
+                _list.Add(result);
             }
 
             Refresh();
